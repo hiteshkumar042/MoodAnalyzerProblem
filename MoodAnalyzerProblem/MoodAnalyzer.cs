@@ -15,14 +15,23 @@ namespace MoodAnalyzerProblem
         }
         public string AnalyzeMood()
         {
-            //Contains():- This method is used to check whether the substring occurs within a given string or not.
-            if (this.message.ToLower().Contains("sad"))
+            //UC2- Handle Exception if User Provides InvalidMood - Like NULL
+            try
             {
-                return "SAD";
+                //Contains():- This method is used to check whether the substring occurs within a given string or not.
+                if (message.ToLower().Contains("sad"))
+                {
+                    return "SAD";
+                }
+                else
+                {
+                    return "HAPPY";
+                }
             }
-            else
+            catch (NullReferenceException ex)
             {
-                return "HAPPY";
+                Console.WriteLine(ex.Message);
+                return default; //TC 2.1 For Null Return should be Happy)
             }
         }
     }
